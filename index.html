@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>330 Dick St &mdash; Broker Price Opinion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+      --color-bg:#ffffff; --color-surface:#ffffff; --color-surface-2:#eaf2ed; --color-border:#e1ded6; --color-text:#333333; --color-text-muted:#6b6f6c;
+      --color-primary:#17613c; --color-primary-2:#d9ebe1; --color-band:#a3701f; --color-band-soft:#f2e6d3;
+      --color-alert:#a3341f; --color-alert-soft:#f2dcd3;
+      --radius-md:.5rem; --radius-lg:.9rem; --radius-xl:1.2rem;
+      --shadow-sm:0 1px 2px rgba(0,0,0,.06); --shadow-md:0 8px 24px rgba(0,0,0,.08);
+      --font-display:'Outfit', system-ui, sans-serif; --font-body:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0} html{scroll-behavior:smooth} body{font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.6}
+    a{color:var(--color-primary)} .container{max-width:1100px;margin:0 auto;padding:0 var(--space-4)}
+    .topbar{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:2px solid var(--color-primary);z-index:20}
+    .topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:var(--space-3) 0;flex-wrap:wrap;gap:var(--space-2)}
+    .logo{display:flex;gap:var(--space-3);align-items:center;font-weight:600}
+    .logo img{height:42px;width:auto;display:block}
+    .hero{padding:var(--space-16) 0 var(--space-12)}
+    .eyebrow{font-size:var(--text-sm);letter-spacing:.12em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-3)}
+    h1,h2,h3,h4{font-family:var(--font-display);line-height:1.12;font-weight:700;color:var(--color-primary)}
+    h1{font-size:var(--text-2xl);max-width:36ch;margin-bottom:var(--space-4)} h2{font-size:var(--text-xl);margin-bottom:var(--space-5)} h3{font-size:var(--text-lg);margin-bottom:var(--space-3)} h4{font-size:var(--text-base);margin-bottom:var(--space-2)}
+    .lede{max-width:76ch;color:var(--color-text-muted)}
+    .grid{display:grid;grid-template-columns:1.3fr .9fr;gap:var(--space-8);align-items:start}
+    .card{background:var(--color-surface);border:1px solid rgba(31,35,32,.12);border-radius:var(--radius-xl);padding:var(--space-6);box-shadow:var(--shadow-sm)}
+    .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);margin-top:var(--space-8)}
+    .stat{background:var(--color-surface-2);border-radius:var(--radius-lg);padding:var(--space-4)} .stat-label{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted)} .stat-value{font-size:var(--text-lg);font-weight:700;margin-top:.2rem;color:var(--color-primary)}
+    .stat-alert .stat-value{color:var(--color-alert)}
+    section{padding:var(--space-10) 0}
+    section.alt{background:var(--color-surface-2)}
+    .table{width:100%;border-collapse:collapse;font-size:var(--text-sm)} .table th,.table td{padding:.85rem .6rem;border-bottom:1px solid rgba(31,35,32,.1);text-align:left;vertical-align:top} .table th{color:var(--color-text-muted);font-weight:600;white-space:nowrap}
+    .table-wrap{overflow-x:auto}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8)}
+    .prop-card + .prop-card{margin-top:var(--space-6)}
+    .spec-list{display:flex;flex-direction:column;gap:var(--space-4);margin-top:var(--space-4)}
+    .spec-row{padding-bottom:var(--space-3);border-bottom:1px solid rgba(31,35,32,.1)}
+    .spec-row:last-child{border-bottom:none;padding-bottom:0}
+    .spec-label{font-size:var(--text-xs);color:var(--color-text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.03em;margin-bottom:.25rem}
+    .spec-value{font-size:var(--text-sm);line-height:1.55}
+    .three-col{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4)}
+    .pill{display:inline-block;background:var(--color-primary-2);color:var(--color-primary);padding:.35rem .7rem;border-radius:999px;font-size:var(--text-xs);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+    .pill-band{display:inline-block;background:var(--color-band-soft);color:var(--color-band);padding:.35rem .7rem;border-radius:999px;font-size:var(--text-xs);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+    .pill-alert{display:inline-block;background:var(--color-alert-soft);color:var(--color-alert);padding:.35rem .7rem;border-radius:999px;font-size:var(--text-xs);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+    .pill-outline{display:inline-block;border:1px solid rgba(31,35,32,.18);color:var(--color-text-muted);padding:.3rem .65rem;border-radius:999px;font-size:var(--text-xs);font-weight:600;margin:.15rem .25rem .15rem 0}
+    .note{font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-4)}
+    footer{padding:var(--space-10) 0;background:var(--color-primary);color:#ffffff;font-size:var(--text-sm)}
+    .footer-inner{display:flex;align-items:center;gap:var(--space-6);flex-wrap:wrap}
+    .footer-logo{height:36px;width:auto;filter:brightness(0) invert(1)}
+    .disclaimer{background:var(--color-surface-2);border-radius:var(--radius-lg);padding:var(--space-5);font-size:var(--text-sm);color:var(--color-text-muted);margin-top:var(--space-6)}
+    .prop-divider{display:flex;align-items:center;gap:var(--space-4);margin:var(--space-4) 0 var(--space-6)}
+    .prop-divider .badge{background:var(--color-primary);color:#fff;font-family:var(--font-display);font-weight:700;font-size:var(--text-xs);letter-spacing:.06em;text-transform:uppercase;padding:.4rem .85rem;border-radius:999px;white-space:nowrap}
+    .prop-divider .badge.two{background:var(--color-band)}
+    .prop-divider hr{flex:1;border:none;border-top:1px solid rgba(31,35,32,.15)}
+    .terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}
+    .bio-grid{display:grid;grid-template-columns:.9fr 1.4fr;gap:var(--space-8);align-items:start}
+    .reuse-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-5);margin-top:var(--space-5)}
+    .reuse-card{background:var(--color-surface);border:1px solid rgba(31,35,32,.12);border-radius:var(--radius-lg);padding:var(--space-5)}
+    .reuse-card h4{margin-bottom:var(--space-2)}
+    .reuse-card ul{margin:0 0 0 1.1rem;padding:0;font-size:var(--text-sm)}
+    .reuse-card li{margin-bottom:.35rem}
+    @media (max-width: 820px){.grid,.two-col,.terms-grid,.three-col,.bio-grid,.reuse-grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+    .btn-print{display:inline-flex;align-items:center;gap:.5rem;background:var(--color-primary);color:#ffffff;border:none;padding:.55rem 1.1rem;border-radius:999px;font-family:var(--font-body);font-weight:600;font-size:var(--text-xs);letter-spacing:.02em;cursor:pointer;box-shadow:var(--shadow-sm);transition:background .15s ease}
+    .btn-print:hover{background:#0f4a2d}
+    .btn-print svg{width:15px;height:15px;fill:currentColor;flex:none}
+    .topbar-actions{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+    @media screen and (max-width: 820px){.adj-table{min-width:760px}.comps-table{min-width:680px}.adj-table td:nth-child(4){min-width:380px}}
+    @media print {
+      .no-print{display:none !important}
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact}
+      html,body{font-size:10.5pt;line-height:1.45}
+      .topbar{position:static;backdrop-filter:none;box-shadow:none;border-bottom:2px solid var(--color-primary)}
+      .hero{padding:14pt 0 10pt}
+      section{padding:12pt 0}
+      .grid,.two-col,.terms-grid,.three-col,.bio-grid,.reuse-grid{grid-template-columns:1fr;gap:10pt}
+      .stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:8pt}
+      .spec-list{gap:6pt;margin-top:6pt}
+      .spec-row{padding-bottom:5pt}
+      .spec-label{font-size:7.5pt}
+      .spec-value{font-size:9pt;line-height:1.4}
+      h1{font-size:19pt;margin-bottom:8pt}
+      h2{font-size:14.5pt;margin-bottom:8pt}
+      h3{font-size:12pt;margin-bottom:6pt}
+      h4{font-size:10.5pt;margin-bottom:4pt}
+      .card{box-shadow:none;border:1px solid #d7d3c8;padding:10pt}
+      .stat{page-break-inside:avoid}
+      .reuse-card{page-break-inside:avoid;border:1px solid #d7d3c8}
+      table{font-size:9pt}
+      tr{page-break-inside:avoid}
+      .comps-table{table-layout:fixed;width:100%}
+      .comps-table th,.comps-table td{white-space:normal;word-wrap:break-word;overflow-wrap:break-word;font-size:6.4pt;line-height:1.32;padding:.28rem .18rem}
+      .adj-table{table-layout:fixed;width:100%}
+      .adj-table th,.adj-table td{white-space:normal;word-wrap:break-word;overflow-wrap:break-word;font-size:7pt;line-height:1.32;padding:.28rem .18rem}
+      .adj-table th:nth-child(1),.adj-table td:nth-child(1){width:15%}
+      .adj-table th:nth-child(2),.adj-table td:nth-child(2){width:9%}
+      .adj-table th:nth-child(3),.adj-table td:nth-child(3){width:8%}
+      .adj-table th:nth-child(4),.adj-table td:nth-child(4){width:58%}
+      .adj-table th:nth-child(5),.adj-table td:nth-child(5){width:10%}
+      .parcel-table{table-layout:fixed;width:100%}
+      .parcel-table th,.parcel-table td{white-space:normal;word-wrap:break-word;overflow-wrap:break-word;font-size:7.4pt;line-height:1.32;padding:.3rem .2rem}
+      .table-wrap{overflow-x:visible}
+      h2,h3,h4{page-break-after:avoid}
+      .prop-divider{page-break-after:avoid}
+      footer{background:var(--color-primary) !important;color:#ffffff !important;padding:10pt 0}
+      a{color:var(--color-primary) !important;text-decoration:none}
+      footer a{color:#ffffff !important;text-decoration:underline}
+      .sale-comps th:nth-child(1),.sale-comps td:nth-child(1){width:22%}
+      .sale-comps th:nth-child(2),.sale-comps td:nth-child(2){width:9%}
+      .sale-comps th:nth-child(3),.sale-comps td:nth-child(3){width:11%}
+      .sale-comps th:nth-child(4),.sale-comps td:nth-child(4){width:8%}
+      .sale-comps th:nth-child(5),.sale-comps td:nth-child(5){width:9%}
+      .sale-comps th:nth-child(6),.sale-comps td:nth-child(6){width:8%}
+      .sale-comps th:nth-child(7),.sale-comps td:nth-child(7){width:14%}
+      .sale-comps th:nth-child(8),.sale-comps td:nth-child(8){width:8%}
+      .sale-comps th:nth-child(9),.sale-comps td:nth-child(9){width:11%}
+      .land-comps th:nth-child(1),.land-comps td:nth-child(1){width:28%}
+      .land-comps th:nth-child(2),.land-comps td:nth-child(2){width:10%}
+      .land-comps th:nth-child(3),.land-comps td:nth-child(3){width:12%}
+      .land-comps th:nth-child(4),.land-comps td:nth-child(4){width:9%}
+      .land-comps th:nth-child(5),.land-comps td:nth-child(5){width:10%}
+      .land-comps th:nth-child(6),.land-comps td:nth-child(6){width:31%}
+      @page{margin:0.55in}
+    }
+    .subject-photo{float:right;width:300px;max-width:100%;margin:0 0 var(--space-4) var(--space-6)}.subject-photo img{width:100%;height:auto;display:block;border-radius:var(--radius-lg);box-shadow:var(--shadow-md)}.subject-photo figcaption{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:.4rem}.hero .stats{clear:both}
+    @media (max-width:700px){.subject-photo{float:none;width:100%;max-width:340px;margin:0 0 var(--space-4)}}
+    @media print{.subject-photo{width:2.4in}.card{break-inside:avoid;page-break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="logo"><img src="assets/gm-logo.svg" alt="Grant-Murray Real Estate" /></div>
+      <div class="topbar-actions">
+        <div class="pill">Broker Price Opinion</div>
+        <button class="btn-print no-print" type="button" onclick="window.print()">
+          <svg viewBox="0 0 24 24"><path d="M6 9V2h12v7h2a2 2 0 0 1 2 2v7h-4v4H6v-4H2v-7a2 2 0 0 1 2-2h2zm2-5v5h8V4H8zm8 14H8v3h8v-3zm2-2h2v-5H4v5h2v-2h12v2z"/></svg>
+          Print / Save as PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Broker Price Opinion &middot; Historic Office Building + Parking Lot &middot; 330 Dick St, Fayetteville, NC 28301</div>
+        <h1>330 Dick Street &mdash; William McDiarmid House &mdash; Broker Price Opinion</h1>
+        <figure class="subject-photo"><img src="assets/330-dick-2015.jpg" alt="330 Dick St, a two-and-a-half-story white frame house with a wraparound porch" width="1200" height="800" /><figcaption>330 Dick St in 2015. Photo: Apc106, CC BY-SA 3.0, via Wikimedia Commons</figcaption></figure>
+        <p class="lede">The William McDiarmid House is a c.1907 American Foursquare-style house in downtown Fayetteville, a short walk from the county courthouse. It has about <strong>6,901 SF</strong> of heated space on two floors and was used for decades as a law office. The house is listed on the <strong>National Register of Historic Places</strong>. This report values the house and the paved parking lot next to it as one property: <strong>0.54 acres</strong> in total, zoned <strong>OI (Office &amp; Institutional)</strong>. The building <strong>needs a full renovation</strong>. Its heating and air systems have been replaced and appear to work.</p>
+        <div class="stats">
+          <div class="stat"><div class="stat-label">Heated area</div><div class="stat-value">6,901 SF</div></div>
+          <div class="stat"><div class="stat-label">Condition</div><div class="stat-value">Full reno</div></div>
+          <div class="stat"><div class="stat-label">Land / zoning</div><div class="stat-value">0.54 ac / OI</div></div>
+          <div class="stat stat-alert"><div class="stat-label">Broker price opinion</div><div class="stat-value">$425,000</div></div>
+          <div class="stat" style="grid-column:span 2"><div class="stat-label">Value range</div><div class="stat-value">$375K&ndash;$450K</div></div>
+        </div>
+        <p class="note">The price opinion of $425,000 for both parcels is about $62 per SF of heated building area, within a value range of $375,000&ndash;$450,000. It reflects the building's current condition, before a full renovation. This is a broker's opinion of value for marketing purposes, not a certified USPAP appraisal.</p>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <h2>Subject property summary</h2>
+<div class="card"><div class="spec-list"><div class="spec-row"><div class="spec-label">Location</div><div class="spec-value">330 Dick St, Fayetteville, NC 28301, in the downtown courthouse and legal-office area. The surrounding blocks are mostly law, title and other professional offices, many of them in older houses.</div></div><div class="spec-row"><div class="spec-label">Parcels</div><div class="spec-value"><strong>Building parcel:</strong> REID 0437621354000 / PIN 0437-62-1354, "McDiarmid Home," 0.28 ac (about 12,197 SF), county land class Office.<br/><strong>Parking parcel:</strong> REID 0437621482000 / PIN 0437-62-1482, "Parking Lot Dick St," 0.26 ac, county land class Commercial. The parking parcel is paved and is directly next to the house.<br/>The parcels are valued here as one property (0.54 ac in total).</div></div><div class="spec-row"><div class="spec-label">Owner of record</div><div class="spec-value">Gardeavant Properties LLC, 210 Woodside Ave, Fayetteville, NC 28301. The owner bought both parcels together on 9/30/2021 (Book 11266, Page 553). Excise stamps of $730 indicate a <strong>$365,000</strong> price, split evenly between the two parcels in county records.</div></div><div class="spec-row"><div class="spec-label">Building</div><div class="spec-value">Built c.1907 (the county card shows 1900, with an effective year of 1978 and a 1999 remodel). It has two finished stories (main floor 3,476 SF and upper floor 3,425 SF, for 6,901 SF heated) and a half-story attic level. Features include a wood-sided frame, a gable roof with composition shingles, foundation piers with a continuous wall, hardwood floors, 3 full and 2 half baths, and 6 fireplaces. There are open porches of 756 SF (the wraparound porch) and 48 SF, plus a brick walk and stoop.</div></div><div class="spec-row"><div class="spec-label">Condition</div><div class="spec-value"><strong>The building needs a full renovation</strong> before re-occupancy, per the owner. The heating and air systems have been replaced and appear operable. Everything else should be assumed to need work: interior finishes, kitchen and baths, electrical, plumbing, life-safety items and code upgrades for its next use, plus exterior repair and painting.</div></div><div class="spec-row"><div class="spec-label">County value (2026)</div><div class="spec-value">Building parcel $592,078: land $18,783, building $571,660, other improvements $1,635. Because the building is a historic landmark, 50% ($296,039) is deferred, so the taxable value is $296,039. Parking parcel $26,798: land $17,441, paving $9,357. Total before deferral: $618,876. The county applies 29% physical and 10% economic depreciation, which does not reflect a full renovation. The county value is not relied on.</div></div></div></div><p class="note">Sources: Cumberland County records for the <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=82036" target="_blank" rel="noopener">building parcel</a>, its <a href="https://taxpwa.co.cumberland.nc.us/camapwa/BuildingDetails.aspx?PARCELPK=82036&amp;BldgCardNum=1&amp;SectionNum=1" target="_blank" rel="noopener">building card</a>, and the <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=82037" target="_blank" rel="noopener">parking parcel</a>. Condition is as reported by the owner and was not inspected for this report.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Historic status</h2>
+<div class="card">
+          <figure class="subject-photo"><img src="assets/330-dick-1982.jpg" alt="Black-and-white 1982 photo of 330 Dick St showing the wraparound porch and corner gazebo" width="1200" height="892" /><figcaption>The house in 1982, from its National Register nomination (NC State Historic Preservation Office)</figcaption></figure>
+          <p style="font-size:var(--text-sm)">William McDiarmid, a lumber dealer who also made sashes and blinds, built the house around 1907. Its design combines an American Foursquare form with Late Victorian and Colonial Revival details. These include a <strong>wraparound porch with Tuscan columns and a pentagonal, gazebo-like corner</strong>, modillion cornice trim, diamond-paned upper window sashes and six classical mantels. Rufus C. Brown owned it from 1925 to 1940. From the 1940s to the early 1970s, Ada Beasley ran it as a boarding house. Attorney Earl Parks Bandy then converted it to law offices, which remained its use for many years.</p>
+          <p style="font-size:var(--text-sm);margin-top:.75rem">The house was <strong>individually listed on the National Register of Historic Places on 7/7/1983</strong> (#83001863). The City of Fayetteville also lists it as a <strong>local historic landmark</strong>.</p>
+        </div>
+        <div class="two-col" style="margin-top:1.5rem">
+          <div class="card">
+            <h3>What landmark status means for a buyer</h3>
+            <ul style="margin:0 0 0 1.2rem;padding:0;font-size:var(--text-sm)">
+              <li style="margin-bottom:.4rem"><strong>Exterior review.</strong> Exterior changes need a Certificate of Appropriateness (COA) from the Historic Resources Commission before the city reviews building permits. This covers siding, windows, roofing, outdoor mechanical equipment, and changes to the parking or site. Interior work is not reviewed.</li>
+              <li style="margin-bottom:.4rem"><strong>Approval track record.</strong> The commission approved 194 of the 197 COA cases it heard from 2021 to 2025.</li>
+              <li><strong>Demolition</strong> can be delayed by up to 365 days.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Financial benefits</h3>
+            <ul style="margin:0 0 0 1.2rem;padding:0;font-size:var(--text-sm)">
+              <li style="margin-bottom:.4rem"><strong>Property tax deferral.</strong> The landmark parcel is taxed on 50% of its value. If the building's historic significance is lost or impaired, the last three years of deferred taxes plus interest become due.</li>
+              <li style="margin-bottom:.4rem"><strong>Income-producing rehab credits.</strong> A certified rehabilitation can earn a 20% federal credit and a 15% NC credit, plus a 5% state bonus in Tier 1 and Tier 2 counties. Cumberland County is Tier 1 for 2026, so the combined credit is potentially up to 40% of qualified rehab costs. The work must meet the Secretary of the Interior's Standards, and spending must exceed the building's adjusted basis within 24 months.</li>
+              <li><strong>Owner-occupied residence:</strong> a 15% NC credit, capped at $22,500.</li>
+            </ul>
+          </div>
+        </div><p class="note">Sources: <a href="https://npgallery.nps.gov/AssetDetail/NRIS/83001863" target="_blank" rel="noopener">NPS National Register record</a>, <a href="https://files.nc.gov/ncdcr/nr/CD0185.pdf" target="_blank" rel="noopener">1982 National Register nomination (NC HPO)</a>, <a href="https://en.wikipedia.org/wiki/William_McDiarmid_House" target="_blank" rel="noopener">Wikipedia</a>, <a href="https://commons.wikimedia.org/wiki/File:William_McDiarmid_House_(5).JPG" target="_blank" rel="noopener">2015 photo by Apc106, CC BY-SA 3.0</a>, <a href="https://www.fayettevillenc.gov/files/sharedassets/main/v/1/development-services/documents/historic-properties/fayetteville-historic-districts-and-local-landmarks.pdf" target="_blank" rel="noopener">Fayetteville historic districts and local landmarks</a>, <a href="https://www.fayettevillenc.gov/files/sharedassets/main/v/1/development-services/documents/city-of-fayetteville-development-guide.pdf" target="_blank" rel="noopener">City development guide (COA)</a>, <a href="https://www.fayettevillenc.gov/City-Departments/Development-Services/Planning-Zoning/Historic-Preservation" target="_blank" rel="noopener">City historic preservation</a>, <a href="https://cityoffayetteville.legistar.com/ViewReport.ashx?M=R&amp;N=Master&amp;GID=323&amp;ID=7953831&amp;GUID=D581012F-A618-49A0-B869-79F7FA55F5A5&amp;Extra=WithText&amp;Title=Legislation+Details+(With+Text)" target="_blank" rel="noopener">HRC COA activity report</a>, <a href="https://www.ncleg.gov/enactedlegislation/statutes/html/bysection/chapter_105/gs_105-278.html" target="_blank" rel="noopener">G.S. 105-278</a>, <a href="https://www.cumberlandcountync.gov/departments/tax-group/tax/exemptions-exclusions/historical-deferment" target="_blank" rel="noopener">Cumberland County historic deferment</a>, <a href="https://www.hpo.nc.gov/rehabilitation-tax-credits-income-producing-historic-properties" target="_blank" rel="noopener">NC HPO income-producing credits</a>, <a href="https://www.hpo.nc.gov/restoration-services/rehabilitation-tax-credit-programs/rehabilitation-tax-credits-non-income-producing-historic-properties" target="_blank" rel="noopener">NC HPO homeowner credits</a>, <a href="https://www.commerce.nc.gov/grants-incentives/county-distress-rankings-tiers" target="_blank" rel="noopener">NC Commerce 2026 county tiers</a>. Credit eligibility depends on NPS and HPO approval of the specific project. A buyer should consult a tax adviser.</p>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <h2>Zoning &mdash; OI flexibility</h2>
+<div class="card"><ul style="margin:0 0 0 1.2rem;padding:0"><li style="margin-bottom:.5rem"><strong>By right in OI:</strong> offices and professional services, upper-story dwellings, live/work units, two- to four-family dwellings, multi-family housing and single-family detached homes. A pending text amendment (File 26-0379) would remove single-family detached as a permitted use.</li><li style="margin-bottom:.5rem"><strong>Density:</strong> mixed-use development in OI allows up to 24 units per acre, with a 10,000 SF minimum lot. On paper, the 0.54-acre combined site could support about 12 units. In practice, the historic building and the need for parking limit what can be built.</li><li style="margin-bottom:.5rem"><strong>Likely buyers:</strong> an owner-user office (law, title, insurance, nonprofit), a professional-office building with several tenants, or a conversion to residential units under historic rehab credits. The adjoining parking lot is a real advantage downtown, where most older houses converted to offices have little on-site parking.</li></ul></div><p class="note">Sources: <a href="https://online.encodeplus.com/regs/fayetteville-nc/doc-viewer.aspx?secid=11250" target="_blank" rel="noopener">Fayetteville UDO use table</a>, <a href="https://online.encodeplus.com/regs/fayetteville-nc/doc-viewer.aspx?secid=10431" target="_blank" rel="noopener">live/work standards</a>, <a href="https://www.zoneomics.com/code/fayetteville-NC/chapter_3" target="_blank" rel="noopener">OI dimensional standards</a>, <a href="https://cityoffayetteville.legistar.com/LegislationDetail.aspx?ID=8073945&amp;GUID=71323AF7-21CD-406B-B1F2-EC6766494673&amp;Options=&amp;Search=&amp;FullText=1" target="_blank" rel="noopener">File 26-0379</a>. A written zoning determination is recommended before marketing a specific use.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Methodology and verification basis</h2>
+<div class="card"><ul style="margin:0 0 0 1.2rem;padding:0"><li style="margin-bottom:.5rem">Comps were researched independently from Cumberland County deed and sale records. Each price was checked against the excise stamps on the deed. They are older office buildings, house-to-office conversions and local landmarks in downtown and along the Hay St corridor that sold from 2021 to 2025.</li><li style="margin-bottom:.5rem">Excluded: 713 Hay St (a 2/2026 foreclosure deed, discussed under counter-evidence), 1104 Hay St (bought by an institutional buyer, CFRT), 214/208 Rowan St (a multi-parcel package), 308/310 Green St ($0 stamps), and 1015 Arsenal Ave (unclear package).</li><li style="margin-bottom:.5rem">Comps are adjusted to the subject <strong>as is, needing a full renovation</strong>. Adjustments are percentages applied to price per SF of heated area and reflect the broker's professional judgment. A renovation-residual analysis serves as a cross-check.</li><li style="margin-bottom:.5rem">Price per SF covers both parcels, and the parking lot is treated as part of the subject's site. Comps with little on-site parking are adjusted for that difference.</li></ul></div><p class="note">Source: <a href="https://taxpwa.co.cumberland.nc.us/camapwa/SaleDetails.aspx?VCS=8104&amp;PARCELPK=82036" target="_blank" rel="noopener">Cumberland County market-area sales</a>.</p>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <h2>Comparable sales &mdash; downtown / Hay St</h2>
+<div class="card table-wrap"><table class="table comps-table sale-comps"><tr><th>Comp</th><th>Sold</th><th>Price</th><th>Bldg SF</th><th>$/SF</th><th>Acres</th><th>Built</th><th>Distance</th></tr><tr><td><strong>C1. 219 Dick St</strong><br/><span class="muted">Wood-frame office</span></td><td>7/2021</td><td>$380,000</td><td>4,143</td><td>$91.72</td><td>0.56</td><td>1917 / eff. 1970</td><td>0.13 mi</td></tr><tr><td><strong>C2. 911 Hay St</strong><br/><span class="muted">Masonry medical office</span></td><td>1/2025</td><td>$600,000</td><td>7,466</td><td>$80.36</td><td>0.62</td><td>eff. 1954</td><td>1.09 mi</td></tr><tr><td><strong>C3. 709 Hay St</strong><br/><span class="muted">House-style office</span></td><td>10/2025</td><td>$550,000</td><td>3,836</td><td>$143.38</td><td>0.34</td><td>1920 / rem. 2008</td><td>0.80 mi</td></tr><tr><td><strong>C4. 645 Hay St</strong><br/><span class="muted">House-style office</span></td><td>1/2022</td><td>$975,000</td><td>7,141</td><td>$136.53</td><td>1.14</td><td>1926</td><td>0.74 mi</td></tr><tr><td><strong>C5. 916 Hay St</strong><br/><span class="muted">Local landmark house</span></td><td>12/2023</td><td>$335,000</td><td>2,979</td><td>$112.45</td><td>0.42</td><td>1848 / eff. 1970</td><td>1.13 mi</td></tr><tr><td><strong>C6. 159 Maxwell St</strong><br/><span class="muted">Local landmark warehouse, offices and apartments</span></td><td>8/2021</td><td>$1,024,500</td><td>10,400</td><td>$98.51</td><td>0.29</td><td>1900 / ren. 2014</td><td>0.29 mi</td></tr><tr><td><strong>C7. 115 Broadfoot Ave</strong><br/><span class="muted">Masonry office</span></td><td>7/2021</td><td>$158,000</td><td>6,147</td><td>$25.70</td><td>0.31</td><td>eff. 1965</td><td>1.29 mi</td></tr></table></div><p class="note">Sources: Cumberland County records for <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=82083" target="_blank" rel="noopener">219 Dick St</a>, <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=79002" target="_blank" rel="noopener">911 Hay St</a>, <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=79718" target="_blank" rel="noopener">709 Hay St</a>, <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=80116" target="_blank" rel="noopener">645 Hay St</a>, <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=78992" target="_blank" rel="noopener">916 Hay St</a>, <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=81169" target="_blank" rel="noopener">159 Maxwell St</a>, <a href="https://taxpwa.co.cumberland.nc.us/camapwa/PropertySummary.aspx?PARCELPK=62742" target="_blank" rel="noopener">115 Broadfoot Ave</a>. Prices were checked against deed stamps. Distances are straight-line from the subject.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Adjustment matrix</h2>
+<p class="lede" style="margin-bottom:var(--space-6)">Each comp is adjusted to the subject: a c.1907 National Register house of 6,901 SF on two floors that needs a full renovation, with working heating and air, on 0.54 acres (building lot plus its own parking lot) in the downtown courthouse area. Time is adjusted at +2% per year.</p><div class="card table-wrap"><table class="table adj-table"><tr><th>Comp property</th><th>Unadj. $/SF</th><th>Net Adj. %</th><th>What was adjusted</th><th>Adj. $/SF</th></tr><tr><td><strong>C1. 219 Dick St</strong></td><td>$91.72</td><td>&minus;20%</td><td>Location: same street, a block away (0%). Time: about 5.3 years ago (+10%). Condition: an occupied office at the time of sale, while the subject needs a full renovation (&minus;25%). Size: smaller, which sells for more per SF (&minus;5%). Site: similar land and parking (0%).</td><td>$73.38</td></tr><tr><td><strong>C2. 911 Hay St</strong></td><td>$80.36</td><td>&minus;19%</td><td>Location: Hay St corridor, with more traffic exposure (&minus;5%). Time: about 1.8 years ago (+4%). Condition: an occupied, functioning medical office (&minus;20%). Size: similar (0%). Site: larger 0.62-ac lot (&minus;3%). Character: a plain one-story masonry building, with no historic appeal (+5%).</td><td>$65.09</td></tr><tr><td><strong>C3. 709 Hay St</strong></td><td>$143.38</td><td>&minus;38%</td><td>Location: similar (0%). Time: about 1 year ago (+2%). Condition: remodeled in 2008 and move-in ready (&minus;35%). Size: about half the subject's size (&minus;10%). Site: smaller lot with less parking (+5%).</td><td>$88.90</td></tr><tr><td><strong>C4. 645 Hay St</strong></td><td>$136.53</td><td>&minus;36%</td><td>Location: similar (0%). Time: about 4.8 years ago (+9%). Condition: a well-kept, higher-grade 1926 house (&minus;35%). Size: similar (0%). Site: 1.14 ac with ample parking (&minus;10%).</td><td>$87.38</td></tr><tr><td><strong>C5. 916 Hay St</strong></td><td>$112.45</td><td>&minus;35%</td><td>Location: Haymount, farther from the courthouse (&minus;3%). Time: about 2.8 years ago (+6%). Condition: usable, but with an effective year of 1970 (&minus;30%). Size: much smaller (&minus;8%). Historic: also a local landmark (0%).</td><td>$73.09</td></tr><tr><td><strong>C6. 159 Maxwell St</strong></td><td>$98.51</td><td>&minus;25%</td><td>Location: core of downtown (&minus;5%). Time: about 5.2 years ago (+10%). Condition: renovated in 2014 into offices and apartments (&minus;40%). Size: larger, which sells for less per SF (+5%). Parking: little on-site parking compared with the subject's adjoining lot (+5%). Historic: also a local landmark (0%).</td><td>$73.88</td></tr><tr><td><strong>C7. 115 Broadfoot Ave</strong></td><td>$25.70</td><td>+30%</td><td>Location: secondary street (0%). Time: about 5.3 years ago (+10%). Condition: dated masonry office with heavy deferred maintenance, similar to the subject's condition (0%). Character: a plain building with no historic or architectural appeal (+15%). Site: similar size, with less parking (+5%).</td><td>$33.41</td></tr></table></div><p class="note">Adjusted range $33&ndash;$89/SF. The median is $73.38/SF and the weighted average is about $71.80/SF (C1 20%; C2, C4, C5 and C6 15% each; C3 and C7 10% each). C7 marks the low end for a building with heavy deferred maintenance. C3 and C4 need the largest condition adjustments. Because the renovation is extensive and the residual check below comes in lower, the concluded rate is $65/SF, below the weighted average.</p>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <h2>Renovation-residual cross-check</h2>
+<div class="card table-wrap"><table class="table parcel-table"><tr><th>Line item</th><th>Basis</th><th>Amount</th></tr><tr><td>Stabilized rent after renovation</td><td>6,901 SF &times; $15.50/SF gross</td><td>$106,966</td></tr><tr><td>Vacancy and credit loss</td><td>10%</td><td>&minus;$10,697</td></tr><tr><td>Operating expenses</td><td>35% of effective income</td><td>&minus;$33,694</td></tr><tr><td><strong>Stabilized NOI</strong></td><td></td><td><strong>$62,575</strong></td></tr><tr><td>Value after renovation</td><td>7.75%&ndash;8.25% cap rate, about $780,000 (about $113/SF)</td><td>$758,000&ndash;$807,000</td></tr><tr><td>Less: full renovation</td><td>$60&ndash;$80/SF (HVAC already replaced)</td><td>&minus;$414,000 to &minus;$552,000</td></tr><tr><td>Less: developer profit, carry and lease-up</td><td>About 12% of value after renovation</td><td>&minus;$94,000</td></tr><tr><td>Residual land and building value, no credits</td><td></td><td>$134,000&ndash;$272,000</td></tr><tr><td>Plus: value of historic credits</td><td>Up to 40% of qualified costs (about 85% of budget), priced at $0.85 per credit dollar</td><td>+$120,000 to +$160,000</td></tr><tr><td><strong>Residual with credits</strong></td><td></td><td><strong>$294,000&ndash;$392,000</strong></td></tr></table></div><p class="note">Rent evidence: 2,200 SF of office space at 310 Dick St, next door, asks $15.82/SF (<a href="https://www.loopnet.com/search/office-space/downtown-fayetteville-fayetteville-nc/for-lease/" target="_blank" rel="noopener">LoopNet downtown listings</a>), and 1003 Hay St asks $16.00/SF (<a href="https://www.loopnet.com/Listing/1003-Hay-St-Fayetteville-NC/41420821/" target="_blank" rel="noopener">LoopNet</a>). Office condos at 321 Dick St are listed at $158,900 each (<a href="https://realmo.com/office-space/for-sale/nc/fayetteville/" target="_blank" rel="noopener">Realmo</a>). Rents, costs, cap rates and credit pricing are broker estimates, not bids or contractor quotes. An owner-user who does not need a developer's profit, or a buyer who uses the credits efficiently, can justify a price above the investor residual.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Value analysis &amp; opinion of value</h2>
+<div class="card">
+          <div class="table-wrap">
+            <table class="table parcel-table">
+              <tr><th>Approach</th><th>Indication</th><th>Weight</th></tr>
+              <tr><td>Sales comparison: 6,901 SF &times; $65/SF</td><td>$448,565</td><td>Primary</td></tr>
+              <tr><td>Renovation residual with historic credits</td><td>$294,000&ndash;$392,000</td><td>Support (investor floor)</td></tr>
+              <tr><td>2021 purchase of both parcels, trended at +2% per year</td><td>$365,000 &rarr; about $403,000</td><td>Support</td></tr>
+              <tr><td>County 2026 value, both parcels, before deferral</td><td>$618,876</td><td>Reference only</td></tr>
+            </table>
+          </div>
+          <div class="stats">
+            <div class="stat stat-alert"><div class="stat-label">Broker price opinion</div><div class="stat-value">$425,000</div></div>
+            <div class="stat" style="grid-column:span 2"><div class="stat-label">Value range</div><div class="stat-value">$375K&ndash;$450K</div></div>
+          </div>
+          <p class="note" style="margin-top:1.5rem">The value range of $375,000&ndash;$450,000 (about $54&ndash;$65 per SF) runs from the upper end of the investor residual to the sales comparison. The broker price opinion of <strong>$425,000</strong> covers both parcels and sits in the upper half. It is about 16% above the 2021 purchase price and a little above that price trended to today. The adjoining parking lot and the historic tax credits support the price for both owner-users and rehab investors.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <h2>Counter-evidence &amp; upside</h2>
+<div class="card"><ul style="margin:0 0 0 1.2rem;padding:0"><li style="margin-bottom:.5rem"><strong>Renovation cost drives the value.</strong> Each $10/SF change in the renovation budget moves an investor's residual by about $69,000. Before marketing, a contractor walk-through and scope would narrow the range.</li><li style="margin-bottom:.5rem"><strong>Below the value:</strong> 713 Hay St went back to the lender in a $372,000 foreclosure (2/2026, about $97/SF), and 115 Broadfoot Ave, a dated office, sold for about $26/SF. Downtown office demand is thin, and buyers of large older houses are few.</li><li style="margin-bottom:.5rem"><strong>Landmark constraints.</strong> Exterior work, including windows, siding, roofing and site changes, needs a COA, which adds time and design cost. Getting tax credits requires NPS and HPO approval and adds compliance costs. Removing the building or impairing its historic significance would trigger repayment of three years of deferred taxes plus interest.</li><li style="margin-bottom:.5rem"><strong>Size and layout.</strong> 6,901 SF in a house layout suits one large user or several small suites. Upper-floor access and life-safety upgrades (exits, possibly sprinklers or an elevator for some uses) may be needed depending on occupancy.</li><li style="margin-bottom:.5rem"><strong>Upside: parking and location.</strong> A 0.26-acre paved lot next to the building is rare in the courthouse area and supports a law, title or professional-office user. 219 Dick St, a block away, sold for about $92/SF while occupied.</li><li style="margin-bottom:.5rem"><strong>Upside: incentives.</strong> Up to 40% in combined federal and state credits for an income-producing certified rehab, plus 50% property tax deferral on the landmark parcel, can close much of the gap between cost and value.</li><li style="margin-bottom:.5rem"><strong>Upside: the HVAC has been replaced</strong> and appears operable, which lowers the renovation budget compared with most buildings of this age.</li></ul></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Listing / commission terms</h2>
+<div class="card">
+          <div class="terms-grid">
+            <div>
+              <h4>Sale listing</h4>
+              <p><strong>8% co-brokered</strong> &mdash; of the gross sale price when a cooperating broker procures the buyer, split under standard commercial co-brokerage practice.</p>
+              <p style="margin-top:.5rem"><strong>6% in-house</strong> &mdash; when Grant-Murray Real Estate, LLC procures the buyer directly.</p>
+            </div>
+            <div>
+              <h4>Offering approach</h4>
+              <p>Market both parcels together at <strong>$425,000</strong> to owner-users (law, title, insurance and nonprofit offices) and historic-rehab investors. Feature the National Register listing, the historic credits and tax deferral, the adjoining parking lot and the location near the courthouse. Before launch, get a measured floor plan, a contractor scope and budget, and current interior photos, and confirm landmark boundaries and credit eligibility with the HPO.</p>
+            </div>
+          </div>
+          <p class="note">Listing broker: <strong>Patrick Murray, CCIM, SIOR</strong>, Grant-Murray Real Estate, LLC. Final listing terms, duration and marketing-cost provisions will be set out in a separate written listing agreement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="container">
+        <h2>Limitations</h2>
+<div class="card"><ol style="margin:0 0 0 1.2rem;padding:0"><li style="margin-bottom:.6rem"><strong>Owner-reported condition.</strong> The building's need for a full renovation and the working condition of its HVAC are as reported by the owner. They were not inspected for this report. Heated area (6,901 SF) comes from the county card and was not measured. Another public source lists 7,207 SF.</li><li style="margin-bottom:.6rem"><strong>Historic status.</strong> The National Register and local landmark status come from NPS, NC HPO and city records. The landmark boundary, whether it includes the parking parcel, and credit eligibility should be confirmed with the city and HPO.</li><li style="margin-bottom:.6rem"><strong>Comp data.</strong> Comp sizes, ages and prices come from Cumberland County records and deed stamps and were not confirmed with buyers or sellers. Interior condition at the time of sale is unknown.</li><li style="margin-bottom:.6rem"><strong>Residual inputs.</strong> Rents, renovation costs, cap rates and credit pricing are broker estimates, not bids or contractor quotes.</li><li style="margin-bottom:.6rem">No title search, survey or environmental review was performed. Older buildings may contain lead paint or asbestos.</li><li>This is a broker's opinion of value for marketing purposes, prepared by Grant-Murray Real Estate, LLC. It is not a certified USPAP appraisal.</li></ol></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container two-col">
+        <div class="card">
+          <h3>Prepared by</h3>
+          <p><strong>Patrick Murray, CCIM, SIOR</strong><br/>Principal / Broker in Charge<br/>Grant-Murray Real Estate, LLC</p>
+          <p style="margin-top:.75rem">150 N. McPherson Church Rd<br/>Fayetteville, NC 28303</p>
+          <p style="margin-top:.75rem">O: 910.829.1617<br/>patrick@grantmurrayre.com<br/><a href="https://www.grantmurrayre.com" target="_blank" rel="noopener">grantmurrayre.com</a></p>
+        </div>
+        <div class="card">
+          <h3>Prepared for</h3>
+          <p><strong>Gardeavant Properties LLC</strong><br/>Owner of record<br/>210 Woodside Ave<br/>Fayetteville, NC 28301</p>
+          <p class="disclaimer">This Broker Price Opinion (BPO) is prepared by Patrick Murray, CCIM, SIOR, of Grant-Murray Real Estate, LLC. It is not an appraisal and is not a certified valuation under USPAP. The conclusion uses the sales comparison approach on independently researched closed sales in downtown Fayetteville and along the Hay St corridor, with a renovation-residual cross-check. Adjustments reflect the broker's professional judgment.</p>
+        </div>
+      </div>
+    </section>
+</main>
+
+  <footer>
+    <div class="container footer-inner">
+      <img class="footer-logo" src="assets/gm-logo.svg" alt="Grant-Murray Real Estate" />
+      <div>
+        Broker Price Opinion &mdash; prepared 10/28/2026.<br/>
+        Prepared by Grant-Murray Real Estate | CCIM | SIOR<br/>
+        Live report: <a href="https://tpmurray13.github.io/bpo-330-dick-st/" style="color:#ffffff;text-decoration:underline" target="_blank" rel="noopener">tpmurray13.github.io/bpo-330-dick-st</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
